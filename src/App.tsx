@@ -34,7 +34,7 @@ function App() {
               <Recycle2 size={32} className="text-green-600" />
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center">
-              EcoDescarte
+              EcoTag
             </h1>
           </div>
           <p className="text-gray-600 text-center text-sm md:text-base">
@@ -77,18 +77,6 @@ function App() {
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 text-center">
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">
-              💚 Contribua para um planeta mais limpo
-            </h3>
-            <p className="text-gray-600 text-sm md:text-base">
-              O descarte correto de resíduos é fundamental para preservar o meio ambiente 
-              e garantir um futuro sustentável para todos.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

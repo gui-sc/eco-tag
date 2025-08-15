@@ -1,6 +1,6 @@
 {
-  "name": "EcoDescarte - Descarte Educativo de Lixo",
-  "short_name": "EcoDescarte",
+  "name": "EcoTag - Descarte Educativo de Lixo",
+  "short_name": "EcoTag",
   "description": "Aplicativo educativo para aprender sobre descarte correto de resíduos com geração de QR Codes",
   "start_url": "/",
   "display": "standalone",

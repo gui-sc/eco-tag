@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ecodescarte-v1.0.0';
+const CACHE_NAME = 'EcoTag-v1.0.0';
 const urlsToCache = [
   '/',
   '/static/js/bundle.js',

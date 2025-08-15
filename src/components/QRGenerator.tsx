@@ -112,85 +112,22 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
           </div>
 
           {/* QR Code Info */}
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-6">
+          {/* <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 mb-6">
             <p className="text-sm text-gray-600 mb-2">Código QR contém:</p>
             <p className="font-mono text-xl font-bold text-gray-800 bg-white px-4 py-2 rounded-lg">
               {wasteType.qrText}
             </p>
-          </div>
+          </div> */}
 
-          {/* Instructions */}
-          <div className="text-left bg-blue-50 rounded-xl p-6 mb-6">
-            <h3 className="font-semibold text-blue-800 mb-4 flex items-center gap-2">
-              📱 Como usar o QR Code:
-            </h3>
-            <ol className="text-sm text-blue-700 space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                <span>Aproxime o leitor de QR Code do sistema de coleta</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                <span>O sistema identificará automaticamente o tipo de resíduo</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                <span>Descarte o material no compartimento indicado</span>
-              </li>
-            </ol>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <button
-              onClick={generateQRCode}
-              disabled={isGenerating}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
-            >
-              <RefreshCw size={18} className={isGenerating ? 'animate-spin' : ''} />
-              <span className="hidden sm:inline">Gerar Novo</span>
-            </button>
-            
-            <button
-              onClick={handleDownload}
-              className="bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-green-300"
-            >
-              <Download size={18} />
-              <span className="hidden sm:inline">Baixar</span>
-            </button>
-
-            {navigator.share && (
-              <button
-                onClick={handleShare}
-                className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-300"
-              >
-                <Share2 size={18} />
-                <span className="hidden sm:inline">Compartilhar</span>
-              </button>
-            )}
-            
             <button
               onClick={onBack}
               className="bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300"
             >
               Voltar
             </button>
-          </div>
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-6 bg-white rounded-xl shadow-md p-6">
-          <div className="flex items-start gap-4">
-            <div className="text-2xl">♻️</div>
-            <div>
-              <h4 className="font-semibold text-gray-800 mb-2">Sobre este resíduo:</h4>
-              <p className="text-gray-600 text-sm mb-3">{wasteType.description}</p>
-              <p className="text-xs text-gray-500">
-                Lembre-se: o descarte correto ajuda a preservar o meio ambiente e facilita a reciclagem.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
