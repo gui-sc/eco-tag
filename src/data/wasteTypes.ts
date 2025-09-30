@@ -1,42 +1,42 @@
 import { WasteType } from '../types';
 
 export const wasteTypes: WasteType[] = [
-  {
-    id: 'papel',
-    name: 'Papel',
-    qrText: 'PAPEL',
-    color: 'text-blue-800',
-    bgColor: 'bg-blue-100 hover:bg-blue-200 active:bg-blue-300',
-    icon: 'FileText',
-    description: 'Jornais, revistas, papéis'
-  },
-  {
-    id: 'plastico',
-    name: 'Plástico',
-    qrText: 'PLASTICO',
-    color: 'text-red-800',
-    bgColor: 'bg-red-100 hover:bg-red-200 active:bg-red-300',
-    icon: 'Recycle',
-    description: 'Garrafas, embalagens, sacolas'
-  },
-  {
-    id: 'vidro',
-    name: 'Vidro',
-    qrText: 'VIDRO',
-    color: 'text-green-800',
-    bgColor: 'bg-green-100 hover:bg-green-200 active:bg-green-300',
-    icon: 'Wine',
-    description: 'Garrafas, potes, copos'
-  },
-  {
-    id: 'metal',
-    name: 'Metal',
-    qrText: 'METAL',
-    color: 'text-yellow-800',
-    bgColor: 'bg-yellow-100 hover:bg-yellow-200 active:bg-yellow-300',
-    icon: 'Wrench',
-    description: 'Latas, tampas, ferragens'
-  },
+  // {
+  //   id: 'papel',
+  //   name: 'Papel',
+  //   qrText: 'PAPEL',
+  //   color: 'text-blue-800',
+  //   bgColor: 'bg-blue-100 hover:bg-blue-200 active:bg-blue-300',
+  //   icon: 'FileText',
+  //   description: 'Jornais, revistas, papéis'
+  // },
+  // {
+  //   id: 'plastico',
+  //   name: 'Plástico',
+  //   qrText: 'PLASTICO',
+  //   color: 'text-red-800',
+  //   bgColor: 'bg-red-100 hover:bg-red-200 active:bg-red-300',
+  //   icon: 'Recycle',
+  //   description: 'Garrafas, embalagens, sacolas'
+  // },
+  // {
+  //   id: 'vidro',
+  //   name: 'Vidro',
+  //   qrText: 'VIDRO',
+  //   color: 'text-green-800',
+  //   bgColor: 'bg-green-100 hover:bg-green-200 active:bg-green-300',
+  //   icon: 'Wine',
+  //   description: 'Garrafas, potes, copos'
+  // },
+  // {
+  //   id: 'metal',
+  //   name: 'Metal',
+  //   qrText: 'METAL',
+  //   color: 'text-yellow-800',
+  //   bgColor: 'bg-yellow-100 hover:bg-yellow-200 active:bg-yellow-300',
+  //   icon: 'Wrench',
+  //   description: 'Latas, tampas, ferragens'
+  // },
   {
     id: 'organico',
     name: 'Orgânico',
@@ -46,6 +46,15 @@ export const wasteTypes: WasteType[] = [
     icon: 'Leaf',
     description: 'Restos de comida, cascas'
   },
+  {
+    id: 'reciclavel',
+    name: 'Reciclável',
+    qrText: 'RECICLAVEL',
+    color: 'text-gray-800',
+    bgColor: 'bg-gray-100 hover:bg-gray-200 active:bg-gray-300',
+    icon: 'Trash2',
+    description: 'Materiais que podem ser reciclados'
+  }
   // {
   //   id: 'eletronicos',
   //   name: 'Eletrônicos',

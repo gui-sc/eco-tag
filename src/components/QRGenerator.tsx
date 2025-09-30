@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import QRCode from 'qrcode';
-import { ArrowLeft, RefreshCw, Download, Share2 } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Download, Share2, Printer } from 'lucide-react';
 import { WasteType } from '../types';
 
 interface QRGeneratorProps {
@@ -12,13 +12,7 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  useEffect(() => {
-    if (canvasRef.current) {
-      generateQRCode();
-    }
-  }, [wasteType.qrText]);
-
-  const generateQRCode = async () => {
+  const generateQRCode = useCallback(async () => {
     if (!canvasRef.current) return;
 
     setIsGenerating(true);
@@ -37,7 +31,13 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [wasteType.qrText]);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      generateQRCode();
+    }
+  }, [generateQRCode]);
 
   const handleDownload = () => {
     if (!canvasRef.current) return;
@@ -65,6 +65,35 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
       });
     } catch (error) {
       console.error('Erro ao compartilhar:', error);
+    }
+  };
+
+  const handlePrint = () => {
+    if (!canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const dataUrl = canvas.toDataURL();
+    
+    const printWindow = window.open('', '_blank');
+    if (printWindow) {
+      printWindow.document.open();
+      printWindow.document.close();
+      printWindow.document.body.innerHTML = `
+        <div style="
+          margin: 0;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-family: Arial, sans-serif;
+        ">
+          <h1 style="margin-bottom: 20px; color: #333;">QR Code - ${wasteType.name}</h1>
+          <img src="${dataUrl}" alt="QR Code para ${wasteType.name}" style="max-width: 100%; height: auto;" />
+        </div>
+      `;
+      printWindow.focus();
+      printWindow.print();
+      printWindow.close();
     }
   };
 
@@ -119,13 +148,43 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
             </p>
           </div> */}
 
+          {/* Action Buttons */}
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={handleDownload}
+                className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-green-300"
+              >
+                <Download size={20} />
+                Baixar PNG
+              </button>
+              
+              <button
+                onClick={handlePrint}
+                className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
+              >
+                <Printer size={20} />
+                Imprimir
+              </button>
+              
+              {'share' in navigator && (
+                <button
+                  onClick={handleShare}
+                  className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-purple-300"
+                >
+                  <Share2 size={20} />
+                  Compartilhar
+                </button>
+              )}
+            </div>
 
             <button
               onClick={onBack}
-              className="bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300"
+              className="w-full bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300"
             >
               Voltar
             </button>
+          </div>
         </div>
 
       </div>
