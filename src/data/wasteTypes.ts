@@ -50,9 +50,9 @@ export const wasteTypes: WasteType[] = [
     id: 'reciclavel',
     name: 'Reciclável',
     qrText: 'RECICLAVEL',
-    color: 'text-gray-800',
-    bgColor: 'bg-gray-100 hover:bg-gray-200 active:bg-gray-300',
-    icon: 'Trash2',
+    color: 'text-green-800',
+    bgColor: 'bg-green-100 hover:bg-green-200 active:bg-green-300',
+    icon: 'Recycle',
     description: 'Materiais que podem ser reciclados'
   }
   // {

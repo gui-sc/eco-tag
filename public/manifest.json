@@ -1,7 +1,7 @@
 {
-  "name": "EcoTag - Descarte Educativo de Lixo",
+  "name": "EcoTag - Sistema de Etiquetagem com QR Code",
   "short_name": "EcoTag",
-  "description": "Aplicativo educativo para aprender sobre descarte correto de resíduos com geração de QR Codes",
+  "description": "Sistema de Etiquetagem com QR Code para a Separação de Resíduos Domésticos",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
