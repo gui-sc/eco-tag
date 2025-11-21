@@ -53,7 +53,7 @@ export const wasteTypes: WasteType[] = [
     color: 'text-green-800',
     bgColor: 'bg-green-100 hover:bg-green-200 active:bg-green-300',
     icon: 'Recycle',
-    description: 'Materiais que podem ser reciclados'
+    description: 'Papel, plástico, vidro, metal, latas'
   }
   // {
   //   id: 'eletronicos',
