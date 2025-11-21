@@ -76,24 +76,47 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({ wasteType, onBack }) =
     
     const printWindow = window.open('', '_blank');
     if (printWindow) {
-      printWindow.document.open();
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>QR Code - ${wasteType.name}</title>
+          <style>
+            body {
+              margin: 0;
+              padding: 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              font-family: Arial, sans-serif;
+            }
+            h1 {
+              margin-bottom: 20px;
+              color: #333;
+            }
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>QR Code - ${wasteType.name}</h1>
+          <img src="${dataUrl}" alt="QR Code para ${wasteType.name}" id="qrImage" />
+        </body>
+        </html>
+      `);
       printWindow.document.close();
-      printWindow.document.body.innerHTML = `
-        <div style="
-          margin: 0;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          font-family: Arial, sans-serif;
-        ">
-          <h1 style="margin-bottom: 20px; color: #333;">QR Code - ${wasteType.name}</h1>
-          <img src="${dataUrl}" alt="QR Code para ${wasteType.name}" style="max-width: 100%; height: auto;" />
-        </div>
-      `;
-      printWindow.focus();
-      printWindow.print();
-      printWindow.close();
+      
+      // Aguarda a imagem carregar antes de imprimir
+      const img = printWindow.document.getElementById('qrImage') as HTMLImageElement;
+      if (img) {
+        img.onload = () => {
+          printWindow.focus();
+          printWindow.print();
+          printWindow.close();
+        };
+      }
     }
   };
 
